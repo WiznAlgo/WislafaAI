@@ -83,12 +83,13 @@ object ModelManager {
         }
     }
 
-    private fun finish(context: Context, tmp: File, name: String) {
+    private fun finish(context: Context, tmp: File, name: String): String {
         if (tmp.length() < 1_000_000) error("File terlalu kecil — bukan file model yang valid")
         LlmEngine.close()
         dir(context).listFiles()?.filter { it.name != tmp.name }?.forEach { it.delete() }  // simpan 1 model saja
         val final = File(dir(context), name)
         if (!tmp.renameTo(final)) error("Gagal menyimpan file model")
         Settings(context).modelName = name
+        return name
     }
 }

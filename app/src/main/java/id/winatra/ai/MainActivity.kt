@@ -163,13 +163,13 @@ class MainActivity : AppCompatActivity() {
 
         lifecycleScope.launch {
             val reply = try {
-                Responder.answer(applicationContext, q) { partial ->
+                Responder.answer(applicationContext, q, onPartial = { partial ->
                     runOnUiThread {
                         adapter.items[idx].text = partial
                         adapter.notifyItemChanged(idx)
                         rvChat.scrollToPosition(idx)
                     }
-                }
+                })
             } catch (e: CancellationException) {
                 throw e
             } catch (e: Exception) {

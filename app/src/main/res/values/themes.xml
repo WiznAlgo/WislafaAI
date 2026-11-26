@@ -1,0 +1,4 @@
+<resources>
+    <style name="Theme.Winatra" parent="Theme.Material3.DayNight.NoActionBar" />
+    <style name="Theme.Winatra.Transparent" parent="@android:style/Theme.Translucent.NoTitleBar" />
+</resources>
